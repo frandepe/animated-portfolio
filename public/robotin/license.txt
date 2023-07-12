@@ -1,0 +1,11 @@
+Model Information:
+* title:	Robot Character - Animation
+* source:	https://sketchfab.com/3d-models/robot-character-animation-02cac61196e146a787e3b05a385eb1e9
+* author:	H.art (https://sketchfab.com/h.art)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Robot Character - Animation" (https://sketchfab.com/3d-models/robot-character-animation-02cac61196e146a787e3b05a385eb1e9) by H.art (https://sketchfab.com/h.art) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
