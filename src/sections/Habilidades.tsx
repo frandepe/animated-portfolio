@@ -34,31 +34,31 @@ const MainTitle = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-const TextBlockRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 50%;
-`;
+// const TextBlockRight = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-end;
+//   width: 50%;
+// `;
 
-const TextBlockLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 50%;
-`;
+// const TextBlockLeft = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   width: 50%;
+// `;
 
-const Title = styled.div`
-  font-size: var(--fontlg);
-  margin-bottom: 1rem;
-`;
+// const Title = styled.div`
+//   font-size: var(--fontlg);
+//   margin-bottom: 1rem;
+// `;
 
-const Text = styled.div`
-  font-size: var(--fontxs);
-  color: var(--greyLight);
-  margin-bottom: 0.5rem;
-  width: 55%;
-`;
+// const Text = styled.div`
+//   font-size: var(--fontxs);
+//   color: var(--greyLight);
+//   margin-bottom: 0.5rem;
+//   width: 55%;
+// `;
 
 const TextContainer = styled.div`
   width: 100%;
