@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import fontLight from "../assets/fonts/SourceSansPro-Light.ttf";
-import fontRegular from "../assets/fonts/SourceSansPro-Regular.ttf";
+import fontLight from "../assets/fonts/Roboto-Light.ttf";
+import fontRegular from "../assets/fonts/Roboto-Regular.ttf";
+import fontRobot from "../assets/fonts/VT323-Regular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -16,21 +17,31 @@ h1,h2,h3,h4,h5,h6{
 }
 
 @font-face {
-    font-family: 'Source Sans Pro light';
-    src: local('Source Sans Pro light'), url(${fontLight}) format("truetype") ;
+    font-family: 'Tektur', cursive;
+    src: local('VT323', monospace), url(${fontRobot}) format("truetype") ;
     font-display:swap;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Source Sans Pro';
-    src: local('Source Sans Pro'), url(${fontRegular}) format("truetype") ;
-    font-display:swap;
+    font-family: 'Roboto Regular';
+    src: local('Roboto Regular'), url(${fontRegular}) format("truetype");
+    font-display: swap;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Roboto Light';
+    src: local('Roboto Light'), url(${fontLight}) format("truetype");
+    font-display: swap;
+    font-style: normal;
+}
+
+
+
+
 body{
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
 }
 
@@ -61,8 +72,9 @@ body{
   /* --blueRgba:"0, 113, 227"; */
 
   //fonts
-  --fontL: "Source Sans Pro light";
-  --fontR: "Source Sans Pro";
+  --fontL: "Roboto Light";
+  --fontR: "Roboto Regular";
+  --fontRobot: 'Tektur', cursive;
   
   // gradient
   --gradient: #0eabba 0%, #6064b3 20%, #e681d8 39%, #ffa9a4 76%, #fed2ce 100%;

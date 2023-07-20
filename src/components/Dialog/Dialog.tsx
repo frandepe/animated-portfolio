@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { styled } from "styled-components";
+import { keyframes, styled } from "styled-components";
 
 interface Props {
   text: string;
@@ -26,6 +26,7 @@ export const Dialog = forwardRef<HTMLDivElement, Props>(
       height: max-content;
       color: ${color};
       font-size: var(--fontmd);
+      font-family: var(--fontRobot);
 
       &:before {
         border: 25px solid var(--violetRgba);
@@ -38,10 +39,28 @@ export const Dialog = forwardRef<HTMLDivElement, Props>(
         left: calc(50% - 25px);
       }
     `;
+    const teclear = keyframes`
+from {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%)
+} to {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+`;
 
-    const Text = styled.p`
+    const efecto = keyframes`
+50% {
+  border-color: transparent;
+}
+`;
+
+    const Text = styled.span`
       text-align: center;
+      border-right: 3px solid;
+      padding-right: 5px;
+      animation: ${teclear} 2.5s steps(35),
+        ${efecto} 0.5s step-end infinite alternate;
     `;
+
     return (
       <DialogText ref={ref}>
         <Text>{text}</Text>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cute robot
+* source:	https://sketchfab.com/3d-models/cute-robot-72357362eace4609bbc23d75f6603cab
+* author:	Studio Sazor (https://sketchfab.com/studiosazor)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cute robot" (https://sketchfab.com/3d-models/cute-robot-72357362eace4609bbc23d75f6603cab) by Studio Sazor (https://sketchfab.com/studiosazor) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

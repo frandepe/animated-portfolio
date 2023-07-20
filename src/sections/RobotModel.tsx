@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Stats } from "@react-three/drei";
 import { Suspense } from "react";
 import { RobotPrincipal } from "../components/RobotPrincipal";
 
@@ -20,15 +20,12 @@ export const RobotModel = () => {
       <Canvas camera={{ fov: 50 }}>
         <ambientLight intensity={0.15} />
         <directionalLight position={0.5} />
-        {/* <mesh>
-          <boxGeometry />
-          <meshStandardMaterial color="red" />
-        </mesh> */}
         <Suspense fallback={null}>
           <RobotPrincipal />
         </Suspense>
         <Environment preset="night" />
-        {/* <OrbitControls /> */}
+        {/* <axesHelper args={[5]} />
+        <Stats /> */}
       </Canvas>
     </Container>
   );

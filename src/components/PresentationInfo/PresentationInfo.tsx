@@ -22,7 +22,7 @@ const TextReturn = styled.div`
   height: 250px;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   /*
   
   margin-top: 10px;
@@ -235,19 +235,19 @@ export const PresentationInfo = () => {
       text: (
         <TextContainer>
           <Text delay="0s">
-            <span>Soy desarrollador web especializado en frontend</span>
+            <span>Hola! Soy programador. </span>
           </Text>
           <Text delay="0.4s">
-            <span>Actualmente recido en la ciudad de La Plata,</span>
+            <span>Actualmente recido en la ciudad de La Plata.</span>
           </Text>
           <Text delay="0.8s">
-            <span>provincia de Bs As, Argentina.</span>
+            <span>Mis habilidades se concentran en el frontend,</span>
           </Text>
           <Text delay="1.2s">
-            <span>Tengo un conjunto de habilidades relacionadas con</span>
+            <span>aunque también tengo experiencia y conocimientos</span>
           </Text>
           <Text delay="1.6s">
-            <span>HTML, CSS + JavaScript</span>
+            <span>prácticos en el desarrollo backend</span>
           </Text>
         </TextContainer>
       ),
@@ -267,7 +267,7 @@ export const PresentationInfo = () => {
             <span>Concluí la aceleración de Alkemy</span>
           </Text2>
           <Text2 delay="1.2s">
-            <span>y sigo formandome con cursos en Udemy</span>
+            <span>y sigo formandome con cursos en Udemy.</span>
           </Text2>
         </TextContainer2>
       ),
