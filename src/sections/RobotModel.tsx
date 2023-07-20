@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, Stats } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import { RobotPrincipal } from "../components/RobotPrincipal";
 

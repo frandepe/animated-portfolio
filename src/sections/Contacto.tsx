@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 import { styled } from "styled-components";
 import { RobotPrincipal2 } from "../components/RobotPrincipal2";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Suspense, useRef, useState } from "react";
 import { useForm } from "../hooks/useForm";
 
@@ -176,12 +176,12 @@ export const Contacto = () => {
         "nszf59HRKL-tLfLlD"
       )
       .then(
-        (result) => {
+        () => {
           setLoading(false);
 
           toast.success("👌 Mensaje enviado! Responderemos lo antes posible");
         },
-        (error) => {
+        () => {
           toast.error(
             "😲 Ops! No se ha podido enviar el mensaje, comunicate a travéz de WhatsApp"
           );
