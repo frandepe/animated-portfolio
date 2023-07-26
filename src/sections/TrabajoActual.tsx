@@ -128,7 +128,7 @@ export const TrabajoActual = () => {
             start: "top top",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
+            // markers: true,
           },
           x: 100,
           opacity: 0,

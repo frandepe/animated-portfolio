@@ -14,7 +14,7 @@ const Section = styled.section`
   justify-content: flex-end;
   align-items: center;
 
-  background-color: var(--white);
+  background-color: var(--grey);
   overflow: hidden;
 `;
 

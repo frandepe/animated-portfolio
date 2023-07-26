@@ -40,7 +40,7 @@ export function RobotPrincipal(props: any) {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#phone-model",
-        start: "top+=730 top",
+        start: "top+=650 top",
         endTrigger: "#battery",
         end: "top top",
         scrub: 1,

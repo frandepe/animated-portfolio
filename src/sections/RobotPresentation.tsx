@@ -3,6 +3,7 @@ import styled from "styled-components";
 import backgroundVideo from "../assets/video/video1.mp4";
 import { Dialog } from "../components/Dialog/Dialog";
 import { useLayoutEffect, useRef } from "react";
+import SplitType from "split-type";
 
 const Section = styled.section`
   width: 100vw;
@@ -22,11 +23,11 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background-image: linear-gradient(45deg, var(--gradient));
+  color: var(--violet);
+  /* background-image: linear-gradient(45deg, var(--gradient)); */
   background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
   z-index: 1;
 
   span {
@@ -57,6 +58,7 @@ const VideoContainer = styled.div`
 export const RobotPresentation = () => {
   const container = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const spanContainer = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let tl = gsap
@@ -75,6 +77,42 @@ export const RobotPresentation = () => {
     };
   }, []);
 
+  // Array of line elements
+  //text.lines
+  // Array of word elements
+  //text.words
+  // Array of character elements
+  //text.chars
+
+  useLayoutEffect(() => {
+    // a gsap.context() lets us use scoped selector text and makes cleanup way easier. See https://greensock.com/docs/v3/GSAP/gsap.context()
+    let ctx = gsap.context(() => {
+      let split = SplitType.create(".split", { types: "chars" });
+      console.log(split);
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: spanContainer.current,
+            start: "top-=550 top",
+            end: "bottom top",
+          },
+        })
+        .from(split.chars, {
+          // <- selector text, scoped to this component!
+          opacity: 0,
+          y: 80,
+          ease: "bounce.inOut",
+          duration: 1,
+          stagger: { amount: 0.8 },
+        });
+
+      return () => split.revert(); // context cleanup
+    }, spanContainer); // <- scopes all selector text inside the context to this component (optional, default is document)
+
+    return () => ctx.revert(); // useLayoutEffect cleanup
+  }, []);
+
   return (
     <Section ref={container}>
       <VideoContainer>
@@ -88,9 +126,9 @@ export const RobotPresentation = () => {
           rotateTransform="rotate(-20deg)"
         />
       </ContainerDialog>
-      <TextContainer>
-        <span>desarrollo</span>
-        <span>frontend</span>
+      <TextContainer ref={spanContainer}>
+        <span className="split">desarrollo</span>
+        <span className="split">frontend</span>
       </TextContainer>
     </Section>
   );

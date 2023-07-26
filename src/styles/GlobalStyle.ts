@@ -64,6 +64,7 @@ body{
   --greyLight: #979797;
   --offWhite: #eeeeee;
   --white: #ffffff;
+  --grey: #dadada;
   --blue: #00778a;
   --lightBlue: #0eabba;
   --pink: #ed15dc;

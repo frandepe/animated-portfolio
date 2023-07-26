@@ -29,6 +29,7 @@ export const Button = styled.button`
   margin-left: 5px;
   border: none;
   cursor: pointer; */
+  font-size: var(--fontsm);
   color: var(--white);
   border: none;
   margin-top: 20px;

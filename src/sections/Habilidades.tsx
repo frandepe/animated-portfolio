@@ -23,7 +23,7 @@ const Section = styled.section`
   position: relative;
   background-color: var(--dark);
   color: var(--white);
-
+  height: 200vh;
   & > *:nth-child(odd) {
     margin-left: 4rem;
   }
@@ -119,9 +119,10 @@ export const Habilidades = () => {
       .timeline({
         scrollTrigger: {
           trigger: container.current,
-          start: "top-=500 top",
-          end: "bottom top",
+          start: "top+=2000 top",
+          end: "top+=2500 top",
           scrub: true,
+          // markers: true,
         },
       })
       .fromTo(textOne.current, { x: 0 }, { x: "20%" }, "key1")
@@ -131,7 +132,59 @@ export const Habilidades = () => {
       if (tl) tl.kill();
     };
   }, []);
-  console.log(dialogRef);
+
+  useLayoutEffect(() => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top-=100 top",
+        end: "bottom top",
+        pin: true,
+        scrub: true,
+
+        // markers: true,
+      },
+    });
+    // tl.from(".box", { x: -600, y: -300 });
+    tl.fromTo(
+      ".box-a",
+      { x: -600, y: -300 },
+      { x: 0, y: 0, ease: "bounce.out" }
+    );
+    tl.fromTo(".box-b", { x: -600 }, { x: 0, ease: "bounce.out" });
+    tl.fromTo(
+      ".box-c",
+      { x: -600, y: 300 },
+      { x: 0, y: 0, ease: "bounce.out" }
+    );
+
+    return () => {
+      if (tl) tl.kill();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top+=900 top",
+        end: "bottom top",
+        pin: true,
+        scrub: true,
+      },
+    });
+    tl.fromTo(
+      ".box-d",
+      { x: 620, y: -300 },
+      { x: 0, y: 0, ease: "bounce.out" }
+    );
+    tl.fromTo(".box-e", { x: 620 }, { x: 0, ease: "bounce.out" });
+    tl.fromTo(".box-f", { x: 620, y: 300 }, { x: 0, y: 0, ease: "bounce.out" });
+
+    return () => {
+      if (tl) tl.kill();
+    };
+  }, []);
 
   return (
     <Section id="habilidades" ref={container}>
@@ -144,7 +197,7 @@ export const Habilidades = () => {
           rotateTransform="rotate(-30deg)"
         />
       </div>
-      <ContainerSkills>
+      <ContainerSkills className="box box-a">
         <FlexColumnIcons>
           <DiHtml5 />
           <h5>HTML</h5>
@@ -158,7 +211,7 @@ export const Habilidades = () => {
           <h5>JavaScript</h5>
         </FlexColumnIcons>
       </ContainerSkills>
-      <ContainerSkills>
+      <ContainerSkills className="box box-b">
         <FlexColumnIcons>
           <BiLogoTypescript />
           <h5>TypeScript</h5>
@@ -172,7 +225,7 @@ export const Habilidades = () => {
           <h5>React Native</h5>
         </FlexColumnIcons>
       </ContainerSkills>
-      <ContainerSkills>
+      <ContainerSkills className="box box-c">
         <FlexColumnIcons>
           <img src={logoNext} />
           <h5>Next</h5>
@@ -190,7 +243,7 @@ export const Habilidades = () => {
         <MovingText ref={textOne}>APTITUDES</MovingText>
         <MovingText ref={textTwo}>DESTREZA</MovingText>
       </TextContainer>
-      <ContainerSkills2>
+      <ContainerSkills2 className="box2 box-d">
         <FlexColumnIcons>
           <DiSass />
           <h5>SASS</h5>
@@ -204,7 +257,7 @@ export const Habilidades = () => {
           <h5>MySQL</h5>
         </FlexColumnIcons>
       </ContainerSkills2>
-      <ContainerSkills2>
+      <ContainerSkills2 className="box2 box-e">
         <FlexColumnIcons>
           <BsGit />
           <h5>GIT</h5>
@@ -218,7 +271,7 @@ export const Habilidades = () => {
           <h5>Material UI</h5>
         </FlexColumnIcons>
       </ContainerSkills2>
-      <ContainerSkills2>
+      <ContainerSkills2 className="box2 box-f">
         <FlexColumnIcons>
           <FaSalesforce />
           <h5>SalesForce</h5>
