@@ -24,10 +24,7 @@ const TextContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   color: var(--violet);
-  /* background-image: linear-gradient(45deg, var(--gradient)); */
   background-clip: text;
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   z-index: 1;
 
   span {
@@ -59,6 +56,7 @@ export const RobotPresentation = () => {
   const container = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const spanContainer = useRef<HTMLDivElement>(null);
+  const typewriterContainer = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let tl = gsap
@@ -77,18 +75,10 @@ export const RobotPresentation = () => {
     };
   }, []);
 
-  // Array of line elements
-  //text.lines
-  // Array of word elements
-  //text.words
-  // Array of character elements
-  //text.chars
-
   useLayoutEffect(() => {
     // a gsap.context() lets us use scoped selector text and makes cleanup way easier. See https://greensock.com/docs/v3/GSAP/gsap.context()
     let ctx = gsap.context(() => {
-      let split = SplitType.create(".split", { types: "chars" });
-      console.log(split);
+      let split = SplitType.create(".split", { types: "words" });
 
       gsap
         .timeline({
@@ -98,11 +88,11 @@ export const RobotPresentation = () => {
             end: "bottom top",
           },
         })
-        .from(split.chars, {
+        .from(split.words, {
           // <- selector text, scoped to this component!
           opacity: 0,
           y: 80,
-          ease: "bounce.inOut",
+          // ease: "bounce.inOut",
           duration: 1,
           stagger: { amount: 0.8 },
         });
@@ -124,6 +114,8 @@ export const RobotPresentation = () => {
           left="25%"
           text="Hola, mi nombre es CreateX, déjame ser tu guía en esta aventura!"
           rotateTransform="rotate(-20deg)"
+          ref={typewriterContainer}
+          typewriter="typewriter1"
         />
       </ContainerDialog>
       <TextContainer ref={spanContainer}>

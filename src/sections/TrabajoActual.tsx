@@ -150,8 +150,12 @@ export const TrabajoActual = () => {
         <Title>Actualmente</Title>
         <Title>Trabajando</Title>
         <Title>En natura</Title>
-        <p>https://www.natura.com.pe</p>
-        <p>https://www.natura.com.co</p>
+        <div>
+          <p>https://www.natura.com.mx</p>
+          <p>https://www.natura.com.pe</p>
+          <p>https://www.natura.com.co</p>
+          <p>https://www.natura.cl</p>
+        </div>
       </TitleContainer>
     </Section>
   );

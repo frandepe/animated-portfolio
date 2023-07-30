@@ -30,6 +30,7 @@ const ContainerInfo = styled.div`
 export const Presentation = () => {
   const container = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const typewriterContainer2 = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let tl = gsap
@@ -57,6 +58,8 @@ export const Presentation = () => {
           left="25%"
           text="He preparado esta guía para que conozcas un poco más acerca de mi creador"
           rotateTransform="rotate(20deg)"
+          ref={typewriterContainer2}
+          typewriter="typewriter2"
         />
       </div>
       <ContainerInfo>

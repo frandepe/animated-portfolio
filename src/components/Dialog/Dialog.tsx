@@ -1,4 +1,6 @@
-import { forwardRef } from "react";
+import { forwardRef, useLayoutEffect } from "react";
+import { gsap } from "gsap";
+import SplitType from "split-type";
 import { keyframes, styled } from "styled-components";
 
 interface Props {
@@ -7,10 +9,14 @@ interface Props {
   top: string;
   left: string;
   color?: string;
+  typewriter: string;
 }
 
 export const Dialog = forwardRef<HTMLDivElement, Props>(
-  ({ text, rotateTransform, top, left, color = "var(--white)" }, ref) => {
+  (
+    { text, rotateTransform, top, left, color = "var(--white)", typewriter },
+    ref: any
+  ) => {
     const DialogText = styled.div`
       position: absolute;
       border-radius: 10px;
@@ -39,13 +45,6 @@ export const Dialog = forwardRef<HTMLDivElement, Props>(
         left: calc(50% - 25px);
       }
     `;
-    const teclear = keyframes`
-from {
-  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%)
-} to {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
-}
-`;
 
     const efecto = keyframes`
 50% {
@@ -57,13 +56,34 @@ from {
       text-align: center;
       border-right: 3px solid;
       padding-right: 5px;
-      animation: ${teclear} 2.5s steps(35),
-        ${efecto} 0.5s step-end infinite alternate;
+      animation: ${efecto} 0.5s step-end infinite alternate;
     `;
+
+    useLayoutEffect(() => {
+      let split = SplitType.create("." + typewriter, { types: "chars" });
+
+      let tl = gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top-=550 top",
+            end: "bottom top",
+            // markers: true,
+          },
+        })
+        .from(split.chars, {
+          opacity: 0,
+          stagger: { amount: 2 },
+        });
+
+      return () => {
+        if (tl) tl.kill();
+      };
+    }, []);
 
     return (
       <DialogText ref={ref}>
-        <Text>{text}</Text>
+        <Text className={typewriter}>{text}</Text>
       </DialogText>
     );
   }

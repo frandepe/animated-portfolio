@@ -17,13 +17,7 @@ import meal from "../assets/Images/projects/mealProject.jpg";
 import alkemy from "../assets/Images/projects/alkemyProject.jpg";
 
 const Section = styled.section`
-  /* width: 100vw;
-  height: 200vh; */
   position: relative;
-
-  /* display: flex;
-  justify-content: flex-end;
-  align-items: center; */
   overflow: hidden;
   background-color: var(--white);
 `;
@@ -41,19 +35,21 @@ const ScrollSectionInner = styled.div`
   & > *:nth-child(2) {
     background: linear-gradient(
       90deg,
-      var(--blue) 0%,
-      rgba(255, 255, 255, 1) 100%
+      rgba(0, 0, 0, 1) 0%,
+      #1f1f1f 50%,
+      rgba(71, 71, 71, 1) 100%
     );
   }
   & > *:nth-child(3) {
-    background-color: rgba(255, 255, 255, 1);
-  }
-  & > *:nth-child(4) {
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 1) 0%,
-      var(--violet) 100%
+      rgba(71, 71, 71, 1) 0%,
+      #727272 50%,
+      #929292 100%
     );
+  }
+  & > *:nth-child(4) {
+    background: linear-gradient(90deg, #929292 0%, #b6b6b6 50%, #f5f5f5 100%);
   }
 `;
 
@@ -88,16 +84,7 @@ const Proyectos = () => {
   const triggerRef = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-
-  // gsap.registerPlugin(scrollTrigger)
-  // .timeline({
-  //   scrollTrigger: {
-  //     trigger: container.current,
-  //     start: "top-=400 top",
-  //     end: "bottom top",
-  //     scrub: true,
-  //   },
-  // })
+  const typewriterContainer4 = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let tl = gsap.fromTo(
@@ -153,6 +140,8 @@ const Proyectos = () => {
             left="25%"
             text="Voy a programar el formulario de contacto antes de que alcances el final de la página, mientras tanto, te dejo una selección de proyectos interesantes"
             rotateTransform="rotate(-20deg)"
+            ref={typewriterContainer4}
+            typewriter="typewriter4"
           />
         </div>
 

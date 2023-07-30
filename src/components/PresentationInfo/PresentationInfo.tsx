@@ -11,7 +11,12 @@ interface TextProps {
   delay: string;
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  background: rgba(172, 174, 255, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 13% 87% 35% 65% / 30% 34% 66% 70%;
+`;
 
 const TextContainer = styled.div``;
 const TextContainer2 = styled.div``;

@@ -91,28 +91,27 @@ const MovingText = styled.h1`
 
 export const Habilidades = () => {
   const container = useRef<HTMLDivElement>(null);
-
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const typewriterContainer3 = useRef<HTMLDivElement>(null);
   const textOne = useRef(null);
   const textTwo = useRef(null);
 
-  const dialogRef = useRef<HTMLDivElement>(null);
+  // useLayoutEffect(() => {
+  //   let tl = gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         trigger: container.current,
+  //         start: "top-=600 top",
+  //         end: "bottom top",
+  //         scrub: true,
+  //       },
+  //     })
+  //     .fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
 
-  useLayoutEffect(() => {
-    let tl = gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top-=600 top",
-          end: "bottom top",
-          scrub: true,
-        },
-      })
-      .fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
-
-    return () => {
-      if (tl) tl.kill();
-    };
-  }, []);
+  //   return () => {
+  //     if (tl) tl.kill();
+  //   };
+  // }, []);
 
   useLayoutEffect(() => {
     let tl = gsap
@@ -141,11 +140,9 @@ export const Habilidades = () => {
         end: "bottom top",
         pin: true,
         scrub: true,
-
         // markers: true,
       },
     });
-    // tl.from(".box", { x: -600, y: -300 });
     tl.fromTo(
       ".box-a",
       { x: -600, y: -300 },
@@ -156,7 +153,7 @@ export const Habilidades = () => {
       ".box-c",
       { x: -600, y: 300 },
       { x: 0, y: 0, ease: "bounce.out" }
-    );
+    ).fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
 
     return () => {
       if (tl) tl.kill();
@@ -195,6 +192,8 @@ export const Habilidades = () => {
           left="45%"
           text="Su capacidad para dominar varias habilidades muestra que siempre hay oportunidades para crecer en el camino hacia la excelencia"
           rotateTransform="rotate(-30deg)"
+          ref={typewriterContainer3}
+          typewriter="typewriter3"
         />
       </div>
       <ContainerSkills className="box box-a">
