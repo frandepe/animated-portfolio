@@ -19,19 +19,47 @@ const ContainerDialog = styled.div``;
 const TextContainer = styled.div`
   width: 100%;
   height: 100vh;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--violet);
-  background-clip: text;
   z-index: 1;
+  font-family: var(--fontL);
+
+  & > *:nth-child(1) {
+    margin-left: 2rem;
+  }
+  & > *:nth-child(2) {
+    margin-right: 2rem;
+  }
 
   span {
     font-size: var(--fontxxxl);
     text-transform: uppercase;
     font-weight: 600;
-    padding: 2rem;
+    /* padding: 2rem; */
+
+    @media screen and (max-width: 64em) {
+      font-size: var(--fontxxl);
+      padding: 0;
+    }
+    @media screen and (max-width: 48em) {
+      font-size: var(--fontxl);
+    }
+  }
+
+  @media screen and (max-width: 48em) {
+    flex-direction: column;
+
+    align-items: flex-start;
+    filter: brightness(1.1);
+
+    & > *:last-child {
+      align-self: flex-end;
+    }
+
+    height: 80vh;
+    padding: 0 1rem;
   }
 `;
 

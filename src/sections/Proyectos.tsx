@@ -60,6 +60,10 @@ const ProjectsTop = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 1060px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 
 const ProjectsBottom = styled.div`
@@ -69,6 +73,10 @@ const ProjectsBottom = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 1060px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 
 const ScrollSection = styled.div`
@@ -154,8 +162,7 @@ const Proyectos = () => {
                 description="Guía Pellegrini es un proyecto personal. Una plataforma que
               promueve negocios locales y fomenta el desarrollo económico de la
               ciudad de Pellegrini. Ofrece información actualizada y confiable
-              para que los usuarios tomen decisiones informadas al comprar,
-              comer o contratar servicios en la ciudad."
+              para que los usuarios tomen decisiones informadas al contratar servicios en la ciudad."
                 tecnologies="| React | TypeScript | Material UI | MongoDB | Express | Node |"
                 deploy="https://www.guiapellegrini.com"
                 image={guiaPellegrini}

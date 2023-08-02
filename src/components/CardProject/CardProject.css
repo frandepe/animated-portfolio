@@ -16,6 +16,21 @@
   transform-style: preserve-3d;
 }
 
+@media screen and (max-width: 1060px) {
+  .content {
+    width: calc(48vw);
+    height: 300px;
+    margin-bottom: 50px;
+  }
+  .descriptionBackContainer {
+    overflow: hidden;
+  }
+  .description {
+    overflow-y: auto;
+    max-height: 100px;
+  }
+}
+
 .card:hover .content {
   transform: rotateY(0.5turn);
 }
@@ -76,9 +91,6 @@
 .descriptionBackContainer {
   color: var(--white);
   margin-top: 10px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around; */
 }
 .tecnologiasTitulo {
   text-decoration: underline;

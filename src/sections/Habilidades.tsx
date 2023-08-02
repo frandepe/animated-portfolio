@@ -24,9 +24,14 @@ const Section = styled.section`
   background-color: var(--dark);
   color: var(--white);
   height: 200vh;
-  & > *:nth-child(odd) {
-    margin-left: 4rem;
-  }
+  width: 100%;
+
+  /* & > *:nth-child(odd) { */
+  /* margin-left: 4rem; */
+  /* @media screen and (max-width: 48em) {
+      margin-left: 1rem;
+    } */
+  /* } */
 `;
 
 const FlexColumnIcons = styled.div`
@@ -52,18 +57,44 @@ const ContainerSkills = styled.div`
     filter: invert(100%);
     padding: 20px;
   }
+  @media screen and (max-width: 800px) {
+    margin-left: 0.5rem;
+    svg {
+      font-size: 5em;
+    }
+    h5 {
+      font-size: 1em;
+    }
+    img {
+      width: 90px;
+      margin-bottom: 16px;
+      filter: invert(100%);
+      padding: 10px;
+    }
+  }
 `;
 
 const ContainerSkills2 = styled.div`
   margin-left: 4rem;
   display: flex;
   justify-content: flex-end;
-  width: 90%;
+  /* width: 90%; */
+  padding-right: 2rem;
+
   svg {
     font-size: 10em;
   }
   h5 {
     font-size: 2em;
+  }
+  @media screen and (max-width: 800px) {
+    svg {
+      font-size: 5em;
+    }
+    h5 {
+      font-size: 1em;
+    }
+    padding-right: 1rem;
   }
 `;
 
@@ -87,6 +118,16 @@ const MovingText = styled.h1`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxxxl);
+  }
+  @media screen and (max-width: 64em) {
+    font-size: var(--fontxxl);
+  }
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontxl);
+  }
 `;
 
 export const Habilidades = () => {
@@ -95,23 +136,6 @@ export const Habilidades = () => {
   const typewriterContainer3 = useRef<HTMLDivElement>(null);
   const textOne = useRef(null);
   const textTwo = useRef(null);
-
-  // useLayoutEffect(() => {
-  //   let tl = gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: container.current,
-  //         start: "top-=600 top",
-  //         end: "bottom top",
-  //         scrub: true,
-  //       },
-  //     })
-  //     .fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
-
-  //   return () => {
-  //     if (tl) tl.kill();
-  //   };
-  // }, []);
 
   useLayoutEffect(() => {
     let tl = gsap
@@ -132,61 +156,145 @@ export const Habilidades = () => {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top-=100 top",
-        end: "bottom top",
-        pin: true,
-        scrub: true,
-        // markers: true,
-      },
-    });
-    tl.fromTo(
-      ".box-a",
-      { x: -600, y: -300 },
-      { x: 0, y: 0, ease: "bounce.out" }
-    );
-    tl.fromTo(".box-b", { x: -600 }, { x: 0, ease: "bounce.out" });
-    tl.fromTo(
-      ".box-c",
-      { x: -600, y: 300 },
-      { x: 0, y: 0, ease: "bounce.out" }
-    ).fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
+  // RESPONSIVE
+  let mm: any = gsap.matchMedia();
 
-    return () => {
-      if (tl) tl.kill();
-    };
-  }, []);
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: 800px)`,
+      isMobile: `(max-width: 799px)`,
+      reduceMotion: "(prefers-reduced-motion: reduce)",
+    },
+    (context: any) => {
+      useLayoutEffect(() => {
+        // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+        let { isDesktop } = context.conditions;
 
-  useLayoutEffect(() => {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top+=900 top",
-        end: "bottom top",
-        pin: true,
-        scrub: true,
-      },
-    });
-    tl.fromTo(
-      ".box-d",
-      { x: 620, y: -300 },
-      { x: 0, y: 0, ease: "bounce.out" }
-    );
-    tl.fromTo(".box-e", { x: 620 }, { x: 0, ease: "bounce.out" });
-    tl.fromTo(".box-f", { x: 620, y: 300 }, { x: 0, y: 0, ease: "bounce.out" });
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top-=100 top",
+            end: "bottom top",
+            pin: isDesktop ? true : false,
+            scrub: isDesktop ? true : false,
+            markers: true,
+          },
+        });
 
-    return () => {
-      if (tl) tl.kill();
-    };
-  }, []);
+        tl.fromTo(
+          ".box-a",
+          { x: isDesktop ? -600 : 0, y: isDesktop ? -300 : 0 },
+          { x: 0, y: 0, ease: "bounce.out" }
+        );
+        tl.fromTo(
+          ".box-b",
+          { x: isDesktop ? -600 : 0 },
+          { x: 0, ease: "bounce.out" }
+        );
+        tl.fromTo(
+          ".box-c",
+          { x: isDesktop ? -600 : 0, y: isDesktop ? 300 : 0 },
+          { x: 0, y: 0, ease: "bounce.out" }
+        ).fromTo(
+          dialogRef.current,
+          { opacity: 0 },
+          { opacity: 2, duration: 1 }
+        );
+
+        return () => {
+          if (tl) tl.kill();
+        };
+      }, []);
+
+      useLayoutEffect(() => {
+        let { isDesktop } = context.conditions;
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top+=900 top",
+            end: "bottom top",
+            pin: isDesktop ? true : false,
+            scrub: isDesktop ? true : false,
+          },
+        });
+        tl.fromTo(
+          ".box-d",
+          { x: isDesktop ? 620 : 0, y: isDesktop ? -300 : 0 },
+          { x: 0, y: 0, ease: "bounce.out" }
+        );
+        tl.fromTo(
+          ".box-e",
+          { x: isDesktop ? 620 : 0 },
+          { x: 0, ease: "bounce.out" }
+        );
+        tl.fromTo(
+          ".box-f",
+          { x: isDesktop ? 620 : 0, y: isDesktop ? 300 : 0 },
+          { x: 0, y: 0, ease: "bounce.out" }
+        );
+
+        return () => {
+          if (tl) tl.kill();
+        };
+      }, []);
+    }
+  );
+  // useLayoutEffect(() => {
+  //   let tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: container.current,
+  //       start: "top-=100 top",
+  //       end: "bottom top",
+  //       pin: true,
+  //       scrub: true,
+  //       // markers: true,
+  //     },
+  //   });
+  //   tl.fromTo(
+  //     ".box-a",
+  //     { x: -600, y: -300 },
+  //     { x: 0, y: 0, ease: "bounce.out" }
+  //   );
+  //   tl.fromTo(".box-b", { x: -600 }, { x: 0, ease: "bounce.out" });
+  //   tl.fromTo(
+  //     ".box-c",
+  //     { x: -600, y: 300 },
+  //     { x: 0, y: 0, ease: "bounce.out" }
+  //   ).fromTo(dialogRef.current, { opacity: 0 }, { opacity: 2, duration: 1 });
+
+  //   return () => {
+  //     if (tl) tl.kill();
+  //   };
+  // }, []);
+
+  // useLayoutEffect(() => {
+  //   let tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: container.current,
+  //       start: "top+=900 top",
+  //       end: "bottom top",
+  //       pin: true,
+  //       scrub: true,
+  //     },
+  //   });
+  //   tl.fromTo(
+  //     ".box-d",
+  //     { x: 620, y: -300 },
+  //     { x: 0, y: 0, ease: "bounce.out" }
+  //   );
+  //   tl.fromTo(".box-e", { x: 620 }, { x: 0, ease: "bounce.out" });
+  //   tl.fromTo(".box-f", { x: 620, y: 300 }, { x: 0, y: 0, ease: "bounce.out" });
+
+  //   return () => {
+  //     if (tl) tl.kill();
+  //   };
+  // }, []);
 
   return (
     <Section id="habilidades" ref={container}>
       <SpaceTop />
-      <div ref={dialogRef}>
+      {/* <div ref={dialogRef}>
         <Dialog
           top="8%"
           left="45%"
@@ -195,7 +303,7 @@ export const Habilidades = () => {
           ref={typewriterContainer3}
           typewriter="typewriter3"
         />
-      </div>
+      </div> */}
       <ContainerSkills className="box box-a">
         <FlexColumnIcons>
           <DiHtml5 />

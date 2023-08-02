@@ -10,11 +10,24 @@ interface Props {
   left: string;
   color?: string;
   typewriter: string;
+  maxWidth?: string;
+  mediaTop?: string;
+  mediaLeft?: string;
 }
 
 export const Dialog = forwardRef<HTMLDivElement, Props>(
   (
-    { text, rotateTransform, top, left, color = "var(--white)", typewriter },
+    {
+      text,
+      rotateTransform,
+      top,
+      left,
+      color = "var(--white)",
+      typewriter,
+      maxWidth,
+      mediaTop,
+      mediaLeft,
+    },
     ref: any
   ) => {
     const DialogText = styled.div`
@@ -34,6 +47,11 @@ export const Dialog = forwardRef<HTMLDivElement, Props>(
       font-size: var(--fontmd);
       font-family: var(--fontRobot);
 
+      @media screen and (max-width: ${maxWidth}) {
+        left: ${mediaLeft};
+        top: ${mediaTop};
+      }
+
       &:before {
         border: 25px solid var(--violetRgba);
         content: "";
@@ -43,6 +61,14 @@ export const Dialog = forwardRef<HTMLDivElement, Props>(
         position: absolute;
         bottom: -50px;
         left: calc(50% - 25px);
+      }
+
+      @media screen and (max-width: 48em) {
+        font-size: var(--fontsm);
+        width: 45%;
+      }
+      @media screen and (max-width: 64em) {
+        width: 55%;
       }
     `;
 

@@ -16,6 +16,9 @@ const Container = styled.div`
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 13% 87% 35% 65% / 30% 34% 66% 70%;
+  @media screen and (max-width: 1100px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const TextContainer = styled.div``;
@@ -108,21 +111,10 @@ const Text = styled.p<TextProps>`
     -webkit-text-fill-color: transparent;
   }
 
-  /* 
-  @media screen and (max-width: 70em) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 48em) {
+  @media screen and (max-width: 1100px) {
     font-size: var(--fontmd);
-    height: var(--fontsm);
+    width: 100%;
   }
-  @media screen and (max-width: 40em) {
-    width: 90%;
-  }
-  @media screen and (max-width: 30em) {
-    font-size: var(--fontxs);
-  } */
 `;
 
 const moveUp2 = keyframes`
@@ -162,21 +154,10 @@ const Text2 = styled.p<TextProps>`
     -webkit-text-fill-color: transparent;
   }
 
-  /* 
-  @media screen and (max-width: 70em) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 48em) {
+  @media screen and (max-width: 1100px) {
     font-size: var(--fontmd);
-    height: var(--fontsm);
+    width: 100%;
   }
-  @media screen and (max-width: 40em) {
-    width: 90%;
-  }
-  @media screen and (max-width: 30em) {
-    font-size: var(--fontxs);
-  } */
 `;
 
 const moveUp3 = keyframes`
@@ -216,21 +197,10 @@ const Text3 = styled.p<TextProps>`
     -webkit-text-fill-color: transparent;
   }
 
-  /* 
-  @media screen and (max-width: 70em) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 48em) {
+  @media screen and (max-width: 1100px) {
     font-size: var(--fontmd);
-    height: var(--fontsm);
+    width: 100%;
   }
-  @media screen and (max-width: 40em) {
-    width: 90%;
-  }
-  @media screen and (max-width: 30em) {
-    font-size: var(--fontxs);
-  } */
 `;
 
 export const PresentationInfo = () => {

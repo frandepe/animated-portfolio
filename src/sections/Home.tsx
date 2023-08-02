@@ -14,14 +14,12 @@ const Section = styled.section`
 `;
 
 const TextContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: var(--dark);
   color: var(--white);
 `;
@@ -41,38 +39,21 @@ const Text = styled.p<TextProps>`
   overflow: hidden;
 
   span {
-    text-align: center;
-    position: absolute;
-    left: 38%;
     transform: translateY(3rem);
     animation-name: ${moveUp};
     animation-duration: 2.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     animation-delay: ${(props) => props.delay};
-    font-family: var(--fontL);
+    font-family: var(--font);
     background-image: linear-gradient(-45deg, var(--gradient));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .Home__name {
-    margin-left: 70px;
-  }
 
-  @media screen and (max-width: 70em) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 48em) {
+  @media screen and (max-width: 430px) {
     font-size: var(--fontmd);
-    height: var(--fontsm);
-  }
-  @media screen and (max-width: 40em) {
-    width: 90%;
-  }
-  @media screen and (max-width: 30em) {
-    font-size: var(--fontxs);
   }
 `;
 

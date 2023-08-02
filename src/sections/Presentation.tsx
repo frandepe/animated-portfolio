@@ -9,10 +9,10 @@ const Section = styled.section`
   height: 100vh;
   position: relative;
 
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: center; */
 
   background-color: var(--grey);
   overflow: hidden;
@@ -25,6 +25,12 @@ const ContainerInfo = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media screen and (max-width: 1100px) {
+    justify-content: center;
+    align-items: flex-end;
+    /* margin-bottom: 20px; */
+  }
 `;
 
 export const Presentation = () => {
@@ -55,11 +61,13 @@ export const Presentation = () => {
         <Dialog
           color="var(--dark)"
           top="15%"
-          left="25%"
+          left="calc(50% - 450px)"
           text="He preparado esta guía para que conozcas un poco más acerca de mi creador"
           rotateTransform="rotate(20deg)"
           ref={typewriterContainer2}
           typewriter="typewriter2"
+          maxWidth="1100px"
+          mediaLeft="25%"
         />
       </div>
       <ContainerInfo>

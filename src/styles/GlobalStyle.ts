@@ -39,7 +39,6 @@ h1,h2,h3,h4,h5,h6{
 
 
 
-
 body{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
@@ -76,6 +75,7 @@ body{
   --fontL: "Roboto Light";
   --fontR: "Roboto Regular";
   --fontRobot: 'Tektur', cursive;
+  --fontMajor: 'Major Mono Display', monospace;
   
   // gradient
   --gradient: #0eabba 0%, #6064b3 20%, #e681d8 39%, #ffa9a4 76%, #fed2ce 100%;
