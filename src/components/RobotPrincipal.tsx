@@ -33,60 +33,71 @@ export function RobotPrincipal(props: any) {
     console.log("actions:", actions);
   }, []);
 
-  useLayoutEffect(() => {
-    camera.position.set(0, 2, 6);
+  let mm: any = gsap.matchMedia();
 
-    // gsap.to(camera.position, { x: -1, y: 0.5 });
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#phone-model",
-        start: "top+=650 top",
-        endTrigger: "#battery",
-        end: "top top",
-        scrub: 1,
-        // markers: true,
-      },
-    });
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: 800px)`,
+      isMobile: `(max-width: 799px)`,
+      reduceMotion: "(prefers-reduced-motion: reduce)",
+    },
+    (context: any) => {
+      useLayoutEffect(() => {
+        camera.position.set(0, 2, 6);
 
-    tl.fromTo(camera.position, { y: 7 }, { y: 0 })
-      .to(camera.position, {
-        duration: 1,
-        x: 3,
-        y: 1,
-      })
-      .to(scene.rotation, {
-        y: 1.5,
-      })
-      .to(scene.rotation, {
-        x: 1,
-      })
-      .to(camera.position, {
-        y: 1,
-        x: -3,
-      })
-      .to(scene.rotation, {
-        y: 5,
-      })
-      .to(scene.rotation, {
-        x: 0,
-      })
-      .to(scene.rotation, { y: -1.5, z: 0 })
-      .to(camera.position, { x: 3 })
-      .to(scene.rotation, { y: 1.5, z: 0 })
-      .to(camera.position, { z: 5 })
-      // .to(camera.position, { z: 6, x: -1 })
-      .to(scene.rotation, { z: 6.3, y: 0, duration: 1 })
-      .to(camera.position, { x: 0, y: 0.7 })
-      .to(scene.rotation, { x: 0.8 })
-      .to(camera.position, { z: 10 }, "key2")
-      .to(scene.rotation, { x: 0 });
+        // gsap.to(camera.position, { x: -1, y: 0.5 });
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#phone-model",
+            start: "top+=650 top",
+            endTrigger: "#battery",
+            end: "top top",
+            scrub: 1,
+            // markers: true,
+          },
+        });
 
-    // .fromTo(camera.position, { x: 4 }, { x: 0 });
-    return () => {
-      if (tl) tl.kill();
-    };
-  }, []);
+        tl.fromTo(camera.position, { y: 7 }, { y: 0 })
+          .to(camera.position, {
+            duration: 1,
+            x: 3,
+            y: 1,
+          })
+          .to(scene.rotation, {
+            y: 1.5,
+          })
+          .to(scene.rotation, {
+            x: 1,
+          })
+          .to(camera.position, {
+            y: 1,
+            x: -3,
+          })
+          .to(scene.rotation, {
+            y: 5,
+          })
+          .to(scene.rotation, {
+            x: 0,
+          })
+          .to(scene.rotation, { y: -1.5, z: 0 })
+          .to(camera.position, { x: 3 })
+          .to(scene.rotation, { y: 1.5, z: 0 })
+          .to(camera.position, { z: 5 })
+          // .to(camera.position, { z: 6, x: -1 })
+          .to(scene.rotation, { z: 6.3, y: 0, duration: 1 })
+          .to(camera.position, { x: 0, y: 0.7 })
+          .to(scene.rotation, { x: 0.8 })
+          .to(camera.position, { z: 10 }, "key2")
+          .to(scene.rotation, { x: 0 });
 
+        // .fromTo(camera.position, { x: 4 }, { x: 0 });
+        return () => {
+          if (tl) tl.kill();
+        };
+      }, []);
+    }
+  );
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

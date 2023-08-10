@@ -6,7 +6,7 @@ import { RobotPresentation } from "./sections/RobotPresentation";
 import { Transicion } from "./sections/Transicion";
 import { Home } from "./sections/Home";
 import { GlobalStyle } from "./styles/GlobalStyle";
-// import { RobotModel } from "./sections/RobotModel";
+import { RobotModel } from "./sections/RobotModel";
 import { Contacto } from "./sections/Contacto";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <>
       <GlobalStyle />
       <Home />
-      {/* <RobotModel /> */}
+      <RobotModel />
       <RobotPresentation />
       <Presentation />
       <Habilidades />

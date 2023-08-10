@@ -11,6 +11,9 @@ const Section = styled.section`
   z-index: 2;
   background-color: var(--white);
   overflow: hidden;
+  @media screen and (max-width: 30em) {
+    min-height: 92vh;
+  }
 `;
 
 const V1 = styled.video`
@@ -67,7 +70,7 @@ const TitleContainer = styled.div`
   }
   @media screen and (max-width: 30em) {
     top: 70%;
-    right: 40%;
+    right: 32%;
   }
 `;
 

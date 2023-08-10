@@ -5,12 +5,12 @@ import { styled } from "styled-components";
 import { RobotPrincipal2 } from "../components/RobotPrincipal2";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useForm } from "../hooks/useForm";
 
 const Section = styled.div`
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
   position: relative;
   z-index: 1;
   background: var(--dark);
@@ -19,6 +19,11 @@ const Section = styled.div`
   justify-content: space-around;
   overflow: hidden;
   margin-top: 5em;
+  @media screen and (max-width: 800px) {
+    height: 200vh;
+    margin-top: 10em;
+    flex-direction: column;
+  }
 `;
 
 const Button = styled.button`
@@ -61,11 +66,19 @@ const Button = styled.button`
 
 const ContainerCanvas = styled.div`
   width: 40vw;
+
+  margin-bottom: -500px;
+  @media screen and (max-width: 800px) {
+    width: 100vw;
+    height: 500px;
+  }
 `;
 
 const Form = styled.form`
   width: 40rem;
-
+  @media screen and (max-width: 800px) {
+    width: 100vw;
+  }
   & > div:first-child {
     & > input {
       width: 100%;
@@ -140,9 +153,18 @@ const ContainerForm = styled.div`
   margin-top: 15rem;
   padding: 3rem;
   color: var(--white);
+  @media screen and (max-width: 800px) {
+    padding: 0;
+  }
 `;
 
 export const Contacto = () => {
+  const [showOrbitControls, setShowOrbitControls] = useState(false);
+
+  const handleResize = () => {
+    setShowOrbitControls(window.innerWidth > 800);
+  };
+
   const [loading, setLoading] = useState<boolean>(false);
   const form: any = useRef();
   const {
@@ -190,18 +212,28 @@ export const Contacto = () => {
     resetForm();
   };
 
+  useEffect(() => {
+    handleResize(); // Llamada inicial para establecer el estado correctamente
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Section id="contacto">
       <ToastContainer position="bottom-center" limit={1} />
       <ContainerCanvas>
-        <Canvas camera={{ fov: 80 }}>
+        <Canvas camera={{ fov: showOrbitControls ? 80 : 50 }}>
           <ambientLight intensity={0.15} />
           <directionalLight position={0} />
           <Suspense fallback={null}>
             <RobotPrincipal2 />
           </Suspense>
           {/* <Environment preset="night" /> */}
-          <OrbitControls />
+          {showOrbitControls && <OrbitControls />}
         </Canvas>
       </ContainerCanvas>
       <ContainerForm>

@@ -1,6 +1,6 @@
 // import { Canvas } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { SiMui } from "react-icons/si";
 import { DiCss3, DiReact, DiHtml5 } from "react-icons/di";
@@ -25,6 +25,9 @@ const Section = styled.section`
   color: var(--white);
   height: 200vh;
   width: 100%;
+  @media screen and (max-width: 800px) {
+    height: 100vh;
+  }
 
   /* & > *:nth-child(odd) { */
   /* margin-left: 4rem; */
@@ -131,6 +134,12 @@ const MovingText = styled.h1`
 `;
 
 export const Habilidades = () => {
+  const [showOrbitControls, setShowOrbitControls] = useState(false);
+
+  const handleResize = () => {
+    setShowOrbitControls(window.innerWidth > 800);
+  };
+
   const container = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const typewriterContainer3 = useRef<HTMLDivElement>(null);
@@ -240,6 +249,16 @@ export const Habilidades = () => {
       }, []);
     }
   );
+
+  useEffect(() => {
+    handleResize(); // Llamada inicial para establecer el estado correctamente
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   // useLayoutEffect(() => {
   //   let tl = gsap.timeline({
   //     scrollTrigger: {
@@ -294,16 +313,18 @@ export const Habilidades = () => {
   return (
     <Section id="habilidades" ref={container}>
       <SpaceTop />
-      {/* <div ref={dialogRef}>
-        <Dialog
-          top="8%"
-          left="45%"
-          text="Su capacidad para dominar varias habilidades muestra que siempre hay oportunidades para crecer en el camino hacia la excelencia"
-          rotateTransform="rotate(-30deg)"
-          ref={typewriterContainer3}
-          typewriter="typewriter3"
-        />
-      </div> */}
+      {showOrbitControls && (
+        <div ref={dialogRef}>
+          <Dialog
+            top="8%"
+            left="45%"
+            text="Su capacidad para dominar varias habilidades muestra que siempre hay oportunidades para crecer en el camino hacia la excelencia"
+            rotateTransform="rotate(-30deg)"
+            ref={typewriterContainer3}
+            typewriter="typewriter3"
+          />
+        </div>
+      )}
       <ContainerSkills className="box box-a">
         <FlexColumnIcons>
           <DiHtml5 />
