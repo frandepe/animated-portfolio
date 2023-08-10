@@ -44,13 +44,14 @@ export function RobotPrincipal(props: any) {
     },
     (context: any) => {
       useLayoutEffect(() => {
-        camera.position.set(0, 2, 6);
+        let { isDesktop } = context.conditions;
+        isDesktop ? camera.position.set(0, 2, 6) : camera.position.set(0, 2, 9);
 
         // gsap.to(camera.position, { x: -1, y: 0.5 });
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: "#phone-model",
-            start: "top+=650 top",
+            start: isDesktop ? "top+=650 top" : "top+=570 top",
             endTrigger: "#battery",
             end: "top top",
             scrub: 1,
@@ -65,14 +66,14 @@ export function RobotPrincipal(props: any) {
             y: 1,
           })
           .to(scene.rotation, {
-            y: 1.5,
+            y: isDesktop ? 1.5 : 0,
           })
           .to(scene.rotation, {
             x: 1,
           })
           .to(camera.position, {
-            y: 1,
-            x: -3,
+            y: isDesktop ? 1 : 0,
+            x: isDesktop ? -3 : 0,
           })
           .to(scene.rotation, {
             y: 5,
@@ -80,10 +81,10 @@ export function RobotPrincipal(props: any) {
           .to(scene.rotation, {
             x: 0,
           })
-          .to(scene.rotation, { y: -1.5, z: 0 })
+          .to(scene.rotation, { y: isDesktop ? -1.5 : 3, z: 0 })
           .to(camera.position, { x: 3 })
           .to(scene.rotation, { y: 1.5, z: 0 })
-          .to(camera.position, { z: 5 })
+          .to(camera.position, { z: isDesktop ? 5 : 8 })
           // .to(camera.position, { z: 6, x: -1 })
           .to(scene.rotation, { z: 6.3, y: 0, duration: 1 })
           .to(camera.position, { x: 0, y: 0.7 })
